@@ -65,8 +65,8 @@ Programmatie (minimaal vereist om 60% te behalen)
 
 Bijkomende programmatie (Percentage telt enkel indien minimale programmatie bereikt is).
 
-1. Programmeer een shooting light met de DMX driver. Met 3 druktoetsen kan men iedere kleur afzonderlijk van links naar rechts laten vloeien. Dit slecht over één helft van de LED strip. Met de drie andere druktoetsen kan men hetzelfde van rechts naar links doen. In tegenstelling tot het looplicht komt de LED niet meer terug, maar verlaat de LED strip. Men moet meerdere keren eenzelfde kleur kunnen laten afschieten. (20%) 
-2. Bereken van de DMX LED-strip controller de totale brandduur voor elke kleur van LEDs en de totale brandduur van de volledige LED strip in minuten. De totale brandduur is niet de som van de brandduur per kleur! Maak zelf een structure aan waarin deze gegevens samen vervat zitten. (20%)
+6. Programmeer een shooting light met de DMX driver. Met 3 druktoetsen kan men iedere kleur afzonderlijk van links naar rechts laten vloeien. Dit slecht over één helft van de LED strip. Met de drie andere druktoetsen kan men hetzelfde van rechts naar links doen. In tegenstelling tot het looplicht komt de LED niet meer terug, maar verlaat de LED strip. Men moet meerdere keren eenzelfde kleur kunnen laten afschieten. (20%) 
+7. Bereken van de DMX LED-strip controller de totale brandduur voor elke kleur van LEDs en de totale brandduur van de volledige LED strip in minuten. De totale brandduur is niet de som van de brandduur per kleur! Maak zelf een structure aan waarin deze gegevens samen vervat zitten. (20%)
 
 ## Questions
 
