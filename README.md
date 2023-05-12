@@ -1,4 +1,4 @@
-![Overview](./resource/Overview.jpg)
+![Overview](./resources/Overview.jpg)
 
 ## The setup
 
