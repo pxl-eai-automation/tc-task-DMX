@@ -54,7 +54,7 @@ Programmatie (minimaal vereist om 60% te behalen)
 
 1. Maak gebruik van de ‘FB_EL6851CommunicationEx’ functieblok voor de communicatie met de EL6851. Koppel de juiste variabelen met de EL6851. Laat de status van deze functieblok zien in de visualisatie voor snelle foutopsporing. (5%)
 2. Gebruik de array “arrProcessData” van de FB_EL6851CommunicationEx om data op de DMX bus te zetten. Zorg ervoor dat de DMX LED-strip controller vanuit de visualisatie te bedienen is. (5%)
-3. Gebruik de DMX LED-strip controller om een status van een 'motor' weer te geven, die selecteerbaar is via een enumerator (+text list) in de visualisatie. (15%)
+3. Gebruik de DMX LED-strip controller om een status van een 'motor' weer te geven, die selecteerbaar is via een combo box integer in de visualisatie. Deze combo box heeft zowel een enumerator als een text list nodig.  (15%)
    - NOT READY: alle blauwe LEDs knipperen
    - READY: alle blauwe LEDs aan
    - MOVING: alle groene LEDs knipperen
