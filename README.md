@@ -13,7 +13,8 @@ At the datalink layer, a DMX512 controller transmits asynchronous serial data at
 - DMX controller: DMX-SPI Decoder DMX200
   - LED strip: 12V WS2811 LED Strip (20 leds of the 5050 kind)
 
-- *GSM module: Siemens SIM for SMS and call (not used)*
+- *GSM module: Siemens TC35 for SMS and call (not used)*
+- *DMX Moving Head: Fun Generation PicoSpot 20 LED (not used)*
 - PLC terminal: 
   - EL6851 DMX master terminal
   - *EL6002 RS232 serial communication terminal (not used)*
