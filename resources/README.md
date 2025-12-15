@@ -40,11 +40,10 @@ De Siemens TC35 is een seriële GSM-modem die SMS en oproepen kan versturen via 
 - **Voeding**: 5–12V DC
 - **SIM-kaart**: vereist actieve SIM
 
-### SIM-kaartgegevens (testkaart)
+### SIM-kaart
 
-- **GSM-nummer**: 0498 79 81 10
-- **SIM-kaartnummer**: 6824 0111 7355 3
-- **PIN-code**: 2746
+- **Gegevens**: de SIM-kaart en de PIN-code krijg je van de docent.
+
 
 ### Gebruik
 

@@ -24,6 +24,12 @@ At the datalink layer, a DMX512 controller transmits asynchronous serial data at
 ## Preperations
 
 - Lees de [documentatie van de LED driver](./resources/DMX200.pdf).
+- Download en bestudeer de [handleiding van de Fun Generation PicoSpot 20 LED](https://images.static-thomann.de/pics/atg/atgdata/document/manual/372642_c_372642_r3_en_online.pdf). Lees vooral:
+  - Technical specifications (pagina 55)
+  - Functions in 5-channel DMX mode (pagina 45)
+  - Functions in 9-channel DMX mode (pagina 46)
+  - Functions in 11-channel DMX mode (pagina 48)
+  - DMX Menu (pagina 29) - hoe stel je DMX adres en mode in
 - Raadpleeg de handleiding van de Beckhoff [EL6851 DMX Master](https://download.beckhoff.com/download/Document/io/ethercat-terminals/el6851en.pdf). Lees zeker de pagina's:
     - Product overview => Introduction
     - Product overview => Technical data 
@@ -44,12 +50,16 @@ At the datalink layer, a DMX512 controller transmits asynchronous serial data at
 4.  Beschrijf de 'ST_EL6851InData' structure. Wat is de inhoud en waarvoor wordt deze gebruikt?
 5.  Beschrijf de 'ST_EL6851OutData' structure. Wat is de inhoud en waarvoor wordt deze gebruikt?
 6.  Beschrijf de 'ST_DMXCommandBuffer' structure. Wat is de inhoud en waarvoor wordt deze gebruikt?
-7.  Beschrijf de aansluitingen en de werking van de DMX LED-strip controller.
-8.  Beschrijf de aansluitingen en de werking van de DMX200.
+7.  Beschrijf de aansluitingen en de werking van de DMX LED-strip controller (DMX200).
+8.  Beschrijf de aansluitingen en de werking van de Fun Generation PicoSpot 20 LED moving head:
+    - Wat zijn de verschillen tussen 5-channel, 9-channel en 11-channel DMX mode?
+    - Welke functies zijn beschikbaar per mode (Pan, Tilt, Color, Gobo, Dimmer, Strobe)?
+    - Hoe stel je het DMX start-adres in op het device?
+    - Wat is het verschil tussen 8-bit en 16-bit Pan/Tilt controle?
 
 ## Exercises
 
-Programmeer de PLC zodat de ganse RGB LED-strip te besturen is vanuit een visualisatie. Voor DMX te programmeren dien je de bibliotheek Tc2_DMX toe te voegen bij je References.
+Programmeer de PLC zodat de RGB LED-strip en de moving head te besturen zijn vanuit een visualisatie. Voor DMX te programmeren dien je de bibliotheek Tc2_DMX toe te voegen bij je References.
 
 ### Programmatie (minimaal vereist om 60% te behalen)
 
@@ -63,9 +73,8 @@ Gebruik de array "arrProcessData" van de FB_EL6851CommunicationEx om data op de 
 
 **Visualisatie:** Minimaal RGB sliders om handmatig kleuren in te stellen op een paar LEDs.
 
-> [!Tip]
->
-> Elke LED heeft waarschijnlijk meerdere kanalen (R, G, B)
+> [!TIP]
+> De DMX200 driver stuurt WS2811 LED strips aan. Elke LED heeft 3 kanalen (R, G, B). Als je DMX200 op adres 1 staat, dan is LED 1 = kanalen 1,2,3 (R,G,B), LED 2 = kanalen 4,5,6, etc.
 
 #### 3. Motor status display (20%)
 
@@ -101,7 +110,7 @@ Programmeer een configureerbaar looplicht met de DMX200 driver:
 
 ### Bijkomende programmatie (Percentage telt enkel indien minimale programmatie bereikt is)
 
-#### 6. Shooting light effect (20%)
+#### 5. Shooting light effect (20%)
 
 Programmeer een dynamisch shooting light effect:
 
@@ -123,9 +132,43 @@ Programmeer een dynamisch shooting light effect:
 - Snelheid instelbaar
 - Teller per kleur: hoeveel shots zijn afgevuurd
 
-#### 7. Geavanceerd statistiek-systeem met CSV logging (20%)
+**Tip:** Je hebt een array/lijst nodig om meerdere actieve "projectielen" bij te houden, elk met hun eigen positie, kleur en richting.
 
-Stuur de PicoSpot Moving Head aan. Gebruik alle mogelijke channels en zorg dat ze allen volledig te besturen zijn vanuit de visualisatie.
+#### 6. Moving head - Basis controle (20%)
+
+Configureer en bestuur de Fun Generation PicoSpot 20 LED moving head vanuit de PLC:
+
+**Setup:**
+- Stel de moving head in op **9-channel DMX mode** (zie handleiding pagina 29)
+- Stel een DMX start-adres in (bv. 100) dat niet overlapt met de LED strip
+- Documenteer in commentaar welke 9 kanalen gebruikt worden
+
+**Te implementeren functies:**
+- **Pan (horizontale rotatie):** Instelbaar van 0° tot 540° via slider in visualisatie
+- **Tilt (verticale kanteling):** Instelbaar van 0° tot 230° via slider in visualisatie
+- **Pan/Tilt speed:** Instelbaar (langzaam tot snel)
+- **Color wheel:** Selecteerbaar via dropdown of knoppen:
+  - White
+  - Red
+  - Orange
+  - Yellow
+  - Green
+  - Blue
+  - Cyan
+  - Purple
+- **Master dimmer:** Instelbaar van 0% tot 100%
+
+**Visualisatie eisen:**
+- Alle parameters instelbaar via sliders of dropdowns
+- Toon huidige pan/tilt positie in graden
+- Toon geselecteerde kleur (visueel met gekleurde indicator)
+- Home position knop (reset naar center: Pan 270°, Tilt 115°)
+
+> [!IMPORTANT]
+> **DMX Adressering:** Als je moving head op adres 100 staat in 9-channel mode, dan gebruikt hij kanalen 100-108. Zorg dat je LED strip (op bv. adres 1) hier niet mee overlapt! Plan je DMX adresruimte goed.
+
+> [!TIP]
+> **Pan/Tilt bewegingen:** De moving head heeft fysieke limiet switches. Begin met kleine bewegingen om te testen. Pan bereik is 540° (1.5 volledige rotatie), Tilt bereik is 230° (niet volledig verticaal!).
 
 ---
 
